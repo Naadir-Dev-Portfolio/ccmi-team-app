@@ -96,6 +96,7 @@ else:
             st.image("static/powerbi.png", width=100)
             st.subheader("Dataflow Warehouse")
             st.write("Link to the Dataflow Warehouse for Power BI.")
+             st.markdown('<iframe src="https://app.powerbi.com/groups/eae3ff49-45b4-414b-888c-5238c738d787/list?experience=power-bi" width="100%" height="300"></iframe>', unsafe_allow_html=True)
             st.image("static/powerbi.png", width=100)
             st.subheader("Power BI Production")
             st.write("Link to the Power BI Production environment.")
@@ -103,7 +104,7 @@ else:
         with col2:
             st.subheader("Example Embeds:")
             st.write("Embed iframe below:")
-            st.markdown('<iframe src="https://example.com" width="100%" height="300"></iframe>', unsafe_allow_html=True)
+            st.markdown('<iframe src="https://app.powerbi.com/groups/me/apps/7c4d33b8-9dd7-4791-88af-fd0f770309ae/dashboards/59843adc-2aa1-4ccf-8" width="100%" height="300"></iframe>', unsafe_allow_html=True)
             st.subheader("Main Power BI App")
             st.write("Access the main Power BI App.")
             st.markdown('<iframe src="https://example.com" width="100%" height="300"></iframe>', unsafe_allow_html=True)
@@ -118,6 +119,7 @@ else:
             st.image("static/powerapp.png", width=100)
             st.subheader("Power BI Admin Centre")
             st.write("Admin Centre for Power BI management.")
+            st.markdown('<iframe src="https://apps.powerapps.com/play/e/b4016bdf-d476-4c6b-80f1-ab29055b8d71/a/4ad6d92b-186f-4803-a836-e3a807ce2f59?tenantId=de0d74aa-9914-4bb9-9235-fbefe83b1769&hint=39868a9f-e5f1-4c3a-9a0e-aab7403fdfce&sourcetime=1706538779568" width="100%" height="300"></iframe>', unsafe_allow_html=True)
             st.subheader("Power BI Request App")
             st.write("Request app for Power BI services.")
 
@@ -125,6 +127,7 @@ else:
             st.image("static/powerautomate.png", width=100)
             st.subheader("CCMI Workload Tracker")
             st.write("Workload tracker for CCMI.")
+            st.markdown('<iframe src="https://apps.powerapps.com/play/e/b4016bdf-d476-4c6b-80f1-ab29055b8d71/a/a3622e39-c862-4064-a361-a89c327690b3?tenantId=de0d74aa-9914-4bb9-9235-fbefe83b1769&hint=9cdc01b8-d7f0-48ec-ba28-fb6817bb8c34&sourcetime=1703159833218#" width="100%" height="300"></iframe>', unsafe_allow_html=True)
             st.subheader("CCMI Request App")
             st.write("App for requesting CCMI services.")
 
