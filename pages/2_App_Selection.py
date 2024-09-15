@@ -15,6 +15,7 @@ with st.sidebar:
 # Main content for App Selection
 st.title("Select an Application")
 
+# Application details with description, app link, and dev link
 app_details = {
     "MIRA": {
         "description": "MIRA is the main app for managing production.",
@@ -38,32 +39,32 @@ app_details = {
     }
 }
 
-# Custom CSS for horizontal layout
-st.markdown(
-    """
-    <style>
-    .horizontal-select {
-        display: flex;
-        justify-content: space-between;
-    }
-    .horizontal-select div {
-        padding: 10px;
-        background-color: #2e2e2f;
-        border-radius: 8px;
-        margin-right: 10px;
-        cursor: pointer;
-        text-align: center;
-        color: white;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-# Custom horizontal select box
+# Application selection dropdown
 app_selection = st.selectbox("Select an App:", list(app_details.keys()), key='app_selector')
 
-# Use selected_app for app rendering
+# If an application is selected, display the app and dev version
 if app_selection:
     details = app_details[app_selection]
     st.write(f"### {app_selection}")
     st.write(details["description"])
-    st.markdown(f'<iframe src="{details["app_link"]}" width="100%" height="500"></iframe>', unsafe_allow_html=True)
+
+    # Main app section with external link and iframe
+    st.markdown(f'''
+        <a href="{details["app_link"]}" target="_blank">
+            <button style="background-color:#2E2E2E; color:#FFFFFF; padding:8px 16px; border:none; border-radius:4px; cursor:pointer; font-size:14px; margin-bottom:15px;">
+                Open {app_selection} Externally
+            </button>
+        </a>
+    ''', unsafe_allow_html=True)
+    st.markdown(f'<iframe src="{details["app_link"]}" width="100%" height="450"></iframe>', unsafe_allow_html=True)
+
+    # Dev version section with expander
+    with st.expander("Dev Version"):
+        st.markdown(f'''
+            <a href="{details["dev_link"]}" target="_blank">
+                <button style="background-color:#2E2E2E; color:#FFFFFF; padding:8px 16px; border:none; border-radius:4px; cursor:pointer; font-size:14px; margin-bottom:15px;">
+                    Open Dev Version
+                </button>
+            </a>
+        ''', unsafe_allow_html=True)
+        st.markdown(f'<iframe src="{details["dev_link"]}" width="100%" height="450"></iframe>', unsafe_allow_html=True)
