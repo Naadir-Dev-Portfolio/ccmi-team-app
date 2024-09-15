@@ -2,6 +2,7 @@ import streamlit as st
 from menu import render_menu  # Import the JavaScript menu
 from style import inject_css
 
+st.set_page_config(page_title="Home", layout="wide")
 inject_css()
 
 # Sidebar content
