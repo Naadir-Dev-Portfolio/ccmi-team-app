@@ -1,21 +1,21 @@
 import streamlit.components.v1 as components
 
-def render_menu():
+# First Menu (CCMI Team, Power BI, SharePoint, etc.)
+# First Menu (CCMI Team, Power BI, SharePoint, etc.)
+def render_menu_1():
     menu_html = """
     <style>
-        /* Global styles */
         body, .menu-section, .sub-menu a {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use modern fonts to match the app */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Main collapsible sections */
         .menu-section {
             cursor: pointer;
-            font-size: 14px; /* Slightly smaller font to match sidebar */
-            margin: 2px 0;  /* Tighten vertical margins */
-            padding: 8px;  /* Adjust padding for internal spacing */
-            background-color: #2c2c2e; /* Dark background to match sidebar */
-            color: #ffffff; /* White text */
+            font-size: 14px;
+            margin: 2px 0;
+            padding: 8px;
+            background-color: #2c2c2e;
+            color: #ffffff;
             border-radius: 6px;
             display: flex;
             justify-content: space-between;
@@ -23,45 +23,52 @@ def render_menu():
             transition: background-color 0.3s ease;
         }
 
-        /* Hover effect for main sections */
         .menu-section:hover {
-            background-color: #3a3a3d; /* Slightly lighter hover effect */
+            background-color: #3a3a3d;
         }
 
-        /* Sub-menu styling (hidden by default) */
         .sub-menu {
             display: none;
             margin-left: 15px;
-            font-size: 13px; /* Slightly smaller font for sub-menu */
-            color: #b3b3b3; /* Lighter text for sub-menu */
+            font-size: 13px;
+            color: #b3b3b3;
         }
 
-        /* Links within the sub-menu */
         .sub-menu a {
             display: block;
             padding: 6px 10px;
-            color: #ffffff; /* White text for sub-menu links */
-            background-color: #2e2e2f; /* Darker background for sub-menu links */
+            color: #ffffff;
+            background-color: #2e2e2f;
             margin: 2px 0;
-            text-decoration: none;
+            text-decoration: none; /* No underline on sub-menu links */
             border-radius: 5px;
             transition: background-color 0.2s;
         }
 
-        /* Hover effect for sub-menu links */
         .sub-menu a:hover {
-            background-color: #3a3a3d; /* Slightly lighter hover on submenu */
-            color: #ffffff; /* Keep text white */
+            background-color: #3a3a3d;
+            color: #ffffff;
         }
 
-        /* Toggle icon (plus/minus) */
+        /* Remove underline from main menu links (like Citrix and ZohoDesk) */
+        a {
+            text-decoration: none;
+            color: inherit; /* Inherit color from the parent */
+        }
+
+        a:hover {
+            text-decoration: none; /* No underline on hover */
+        }
+
         .icon {
             font-size: 16px;
-            color: #ffffff; /* White for icons */
+            color: #ffffff;
         }
 
-        /* Scrollbar styling for sub-menu */
+        /* Custom scroll bar styling for sub-menus */
         .sub-menu {
+            max-height: 150px;
+            overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: #606274 #2e2e2f;
         }
@@ -84,16 +91,9 @@ def render_menu():
         .sub-menu::-webkit-scrollbar-thumb:hover {
             background-color: #7a7c8e;
         }
-
-        /* Make sub-menus scrollable */
-        .sub-menu {
-            max-height: 150px;
-            overflow-y: auto;
-        }
     </style>
 
     <script>
-        // JavaScript function to toggle visibility of sub-menus
         function toggleMenu(menuId) {
             var menu = document.getElementById(menuId);
             var icon = document.getElementById(menuId + '-icon');
@@ -108,30 +108,35 @@ def render_menu():
     </script>
 
     <div id="menu-container">
+        <!-- CCMI Team Section -->
+        <div class="menu-section" onclick="toggleMenu('ccmi-team')">
+            CCMI Team <span id="ccmi-team-icon" class="icon">+</span>
+        </div>
+        <div id="ccmi-team" class="sub-menu">
+            <a href="https://example.com" target="_blank">Sharepoint Site</a>
+            <a href="https://example.com" target="_blank">Team Drive</a>
+            <a href="https://example.com" target="_blank">121 Packs</a>
+            <a href="https://example.com" target="_blank">Videos</a>
+            <a href="https://example.com" target="_blank">Team Projects</a>
+            <a href="https://example.com" target="_blank">Webmail</a>
+            <a href="https://example.com" target="_blank">Open Requests</a>
+            <a href="https://example.com" target="_blank">Team Planner</a>
+        </div>
+
         <!-- Power BI Section -->
         <div class="menu-section" onclick="toggleMenu('power-bi')">
             Power BI <span id="power-bi-icon" class="icon">+</span>
         </div>
         <div id="power-bi" class="sub-menu">
+            <a href="https://example.com" target="_blank">Power BI</a>
             <a href="https://example.com" target="_blank">Dataflow Warehouse</a>
-            <a href="https://example.com" target="_blank">Power BI Production</a>
-            <a href="https://example.com" target="_blank">Main Power BI App</a>
-            <a href="https://example.com" target="_blank">CCMI Uploads</a>
-            <a href="https://example.com" target="_blank">All Other Teams Uploads</a>
-            <a href="https://example.com" target="_blank">Admin Section</a>
-        </div>
-
-        <!-- Power Apps Section -->
-        <div class="menu-section" onclick="toggleMenu('power-apps')">
-            Power Apps <span id="power-apps-icon" class="icon">+</span>
-        </div>
-        <div id="power-apps" class="sub-menu">
-            <a href="https://example.com" target="_blank">Power BI Admin Centre</a>
-            <a href="https://example.com" target="_blank">Power BI Request App</a>
-            <a href="https://example.com" target="_blank">MIRA</a>
-            <a href="https://example.com" target="_blank">CCMI Workload Tracker</a>
-            <a href="https://example.com" target="_blank">CCMI Request App</a>
-            <a href="https://example.com" target="_blank">Request App Admin Centre</a>
+            <a href="https://example.com" target="_blank">Report Production Warehouse</a>
+            <a href="https://example.com" target="_blank">Power BI Bridge</a>
+            <a href="https://example.com" target="_blank">eGain Health Check</a>
+            <a href="https://example.com" target="_blank">Sharepoint Site</a>
+            <a href="https://example.com" target="_blank">CCMI Upload Area</a>
+            <a href="https://example.com" target="_blank">Business Upload Area</a>
+            <a href="https://example.com" target="_blank">PBIX Files</a>
         </div>
 
         <!-- SharePoint Section -->
@@ -139,8 +144,21 @@ def render_menu():
             SharePoint <span id="sharepoint-icon" class="icon">+</span>
         </div>
         <div id="sharepoint" class="sub-menu">
-            <a href="https://example.com" target="_blank">SharePoint Trackers</a>
-            <a href="https://example.com" target="_blank">SharePoint Sites</a>
+            <a href="https://example.com" target="_blank">Groups</a>
+            <a href="https://example.com" target="_blank">CCMI SharePoint Lists</a>
+            <a href="https://example.com" target="_blank">All SharePoint Lists</a>
+            <a href="https://example.com" target="_blank">Request Logs</a>
+            <a href="https://example.com" target="_blank">Group Audit List</a>
+            <a href="https://example.com" target="_blank">GSOP Payment Errors</a>
+        </div>
+
+        <!-- Shared Drive Section -->
+        <div class="menu-section" onclick="toggleMenu('sharedrive')">
+            Shared Drive <span id="sharedrive-icon" class="icon">+</span>
+        </div>
+        <div id="sharedrive" class="sub-menu">
+            <a href="https://example.com" target="_blank">All Shared Drive Areas</a>
+            <a href="https://example.com" target="_blank">Handover Documents</a>
         </div>
 
         <!-- SAP Section -->
@@ -148,10 +166,10 @@ def render_menu():
             SAP <span id="sap-icon" class="icon">+</span>
         </div>
         <div id="sap" class="sub-menu">
-            <a href="https://example.com" target="_blank">SAP Business Warehouse</a>
-            <a href="https://example.com" target="_blank">SAP UI5 (Unplanned Interruptions)</a>
-            <a href="https://example.com" target="_blank">401 Unplanned Interruptions Data</a>
-            <a href="https://example.com" target="_blank">SAP CRM Password</a>
+            <a href="https://example.com" target="_blank">Business Warehouse</a>
+            <a href="https://example.com" target="_blank">UI5 Validation</a>
+            <a href="https://example.com" target="_blank">Unplanned Finalized Data (401)</a>
+            <a href="https://example.com" target="_blank">CRM Password Vault</a>
         </div>
 
         <!-- Telephony Section -->
@@ -164,23 +182,152 @@ def render_menu():
             <a href="https://example.com" target="_blank">AWS</a>
         </div>
 
-        <!-- Citrix Section -->
-        <div class="menu-section" onclick="toggleMenu('citrix')">
-            Citrix <span id="citrix-icon" class="icon">+</span>
-        </div>
-        <div id="citrix" class="sub-menu">
-            <a href="https://example.com" target="_blank">Arc Catalog</a>
-            <a href="https://example.com" target="_blank">Esri Maps</a>
-            <a href="https://example.com" target="_blank">Virtual Machines</a>
+        <!-- Citrix (No submenu, direct link) -->
+        <div class="menu-section">
+            <a href="https://example.com" target="_blank" style="color: #ffffff;">Citrix</a>
         </div>
 
-        <!-- Zohodesk Section -->
-        <div class="menu-section" onclick="toggleMenu('zohodesk')">
-            Zohodesk <span id="zohodesk-icon" class="icon">+</span>
+        <!-- ZohoDesk (No submenu, direct link) -->
+        <div class="menu-section">
+            <a href="https://example.com" target="_blank" style="color: #ffffff;">ZohoDesk</a>
         </div>
-        <div id="zohodesk" class="sub-menu">
-            <a href="https://example.com" target="_blank">Zohodesk</a>
+
+        <!-- Other Systems Section -->
+        <div class="menu-section" onclick="toggleMenu('other-systems')">
+            Other Systems <span id="other-systems-icon" class="icon">+</span>
+        </div>
+        <div id="other-systems" class="sub-menu">
+            <a href="https://example.com" target="_blank">ServiceNow</a>
+            <a href="https://example.com" target="_blank">Rand and Rave</a>
+            <a href="https://example.com" target="_blank">AQAD</a>
+            <a href="https://example.com" target="_blank">Gov Streetworks</a>
         </div>
     </div>
     """
-    components.html(menu_html, height=290, scrolling=True)
+    components.html(menu_html, height=400, scrolling=True)
+
+
+def render_menu_2():
+    menu_html = """
+    <style>
+        body, .menu-section, .sub-menu a {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .menu-section {
+            cursor: pointer;
+            font-size: 14px;
+            margin: 2px 0;
+            padding: 8px;
+            background-color: #2c2c2e;
+            color: #ffffff;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-section:hover {
+            background-color: #3a3a3d;
+        }
+
+        .sub-menu {
+            display: none;
+            margin-left: 15px;
+            font-size: 13px;
+            color: #b3b3b3;
+        }
+
+        .sub-menu a {
+            display: block;
+            padding: 6px 10px;
+            color: #ffffff;
+            background-color: #2e2e2f;
+            margin: 2px 0;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .sub-menu a:hover {
+            background-color: #3a3a3d;
+            color: #ffffff;
+        }
+
+        /* Remove underline from main menu links */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .icon {
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        /* Custom scroll bar styling for sub-menus */
+        .sub-menu {
+            max-height: 150px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #606274 #2e2e2f;
+        }
+
+        .sub-menu::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sub-menu::-webkit-scrollbar-track {
+            background: #2e2e2f;
+            border-radius: 3px;
+        }
+
+        .sub-menu::-webkit-scrollbar-thumb {
+            background-color: #606274;
+            border-radius: 3px;
+            border: 1px solid #2e2e2f;
+        }
+
+        .sub-menu::-webkit-scrollbar-thumb:hover {
+            background-color: #7a7c8e;
+        }
+    </style>
+
+    <script>
+        function toggleMenu(menuId) {
+            var menu = document.getElementById(menuId);
+            var icon = document.getElementById(menuId + '-icon');
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+                icon.innerHTML = "+";
+            } else {
+                menu.style.display = "block";
+                icon.innerHTML = "-";
+            }
+        }
+    </script>
+
+    <div id="menu-container">
+        <!-- Power Apps (Direct link) -->
+        <div class="menu-section">
+            <a href="https://example.com" target="_blank" style="color: #ffffff;">Power Apps</a>
+        </div>
+
+        <!-- Power Automate Section with Submenu -->
+        <div class="menu-section" onclick="toggleMenu('power-automate')">
+            Power Automate <span id="power-automate-icon" class="icon">+</span>
+        </div>
+        <div id="power-automate" class="sub-menu">
+            <a href="https://example.com" target="_blank">CSAT Daily Flow</a>
+            <a href="https://example.com" target="_blank">RIIO Score Card Flow</a>
+            <a href="https://example.com" target="_blank">Enquiries Score Card Flow</a>
+            <a href="https://example.com" target="_blank">Weekly Call Performance Flow</a>
+        </div>
+    </div>
+    """
+    components.html(menu_html, height=150, scrolling=True)
