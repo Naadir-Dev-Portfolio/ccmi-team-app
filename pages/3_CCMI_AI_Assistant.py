@@ -1,5 +1,5 @@
 import streamlit as st
-from menu import render_menu
+from menu import render_menu_1, render_menu_2 
 from style import inject_css
 
 import google.generativeai as genai
@@ -8,11 +8,17 @@ import google.generativeai as genai
 st.set_page_config(page_title="CCMI AI Assistant", layout="wide")
 inject_css()
 # Sidebar content (same across all pages)
+# Sidebar content (same across all pages)
 with st.sidebar:
     st.markdown("### Shortcut Links")
-    render_menu()
-    st.image("static/teamlogo2.png", use_column_width=True)
-    st.markdown("<div class='sidebar-footer'>Made for the CCMI Team</div>", unsafe_allow_html=True)
+    render_menu_1()
+    render_menu_2()
+    # Create a column layout to center the image
+    col1, col2, col3 = st.columns([1, 2, 1])  # 3 columns, with the middle one being wider to hold the image
+    
+    with col2:  # Place the image in the center column
+        st.image("static/CCMI-systems-portrait3.png")  # Adjust the width as needed
+        st.markdown("<div class='sidebar-footer'>Made for the CCMI Team</div>", unsafe_allow_html=True)
 
 # Main content for CCMI Assistant
 st.title("CCMI AI Assistant")
